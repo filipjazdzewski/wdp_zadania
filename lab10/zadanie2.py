@@ -12,10 +12,14 @@ dates = [
 def sort_list(date_list):
     for i in range(len(date_list) - 1):
         for j in range(len(date_list) - 1 - i):
-            if (date_list[j]['year'] > date_list[j + 1]['year']) \
-                    or (date_list[j]['year'] == date_list[j + 1]['year'] and date_list[j]['month'] > date_list[j + 1]['month']) \
-                    or (date_list[j]['year'] == date_list[j + 1]['year'] and date_list[j]['month'] == date_list[j + 1]['month'] and date_list[j]['day'] > date_list[j + 1]['day']):
+            if date_list[j]['year'] > date_list[j + 1]['year']:
                 date_list[j], date_list[j + 1] = date_list[j + 1], date_list[j]
+            if date_list[j]['year'] == date_list[j + 1]['year']:
+                if date_list[j]['month'] > date_list[j + 1]['month']:
+                    date_list[j], date_list[j + 1] = date_list[j + 1], date_list[j]
+                if date_list[j]['month'] == date_list[j + 1]['month']:
+                    if date_list[j]['day'] > date_list[j + 1]['day']:
+                        date_list[j], date_list[j + 1] = date_list[j + 1], date_list[j]
 
 
 sort_list(dates)
